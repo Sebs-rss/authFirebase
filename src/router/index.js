@@ -9,6 +9,7 @@ const routes = [
   { path: '/login', component: LoginView },
   { path: '/home', component: HomeView, meta: { requiresAuth: true } },
   { path: '/', redirect: '/login' }
+  
 ];
 
 const router = createRouter({
@@ -29,6 +30,15 @@ router.beforeEach((to, from, next) => {
     // Si la ruta requiere autenticacion y el usuario no esta autenticado, redirigimos al login
     console.log('Redirigiendo a login');
     next('/login');
+  } /* else {
+    // En otro caso, permitimos la navegacion
+    console.log('Permitiendo navegacion');
+    next();
+  } */
+ else if (!requiresAuth && isAuthenticated && to.path !== '/home') {
+    // Si la ruta no requiere autenticacion y el usuario esta autenticado, redirigimos a Home
+    console.log('Redirigiendo a Home');
+    next('/home');
   } else {
     // En otro caso, permitimos la navegacion
     console.log('Permitiendo navegacion');
