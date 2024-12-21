@@ -1,7 +1,17 @@
 <template>
-    <div>
-      <h1>Home</h1>
-      <p>Te doy la bienvenida a la página de inicio, solo accesible para usuarios autenticados.</p>
-    </div>
-  </template>
-  
+  <Home />
+</template>
+
+<script>
+import Home from '../components/Home.vue';
+
+export default {
+  components: {
+    Home
+  },
+  mounted() {
+    console.log('Home component mounted')
+  }
+}
+
+</script>

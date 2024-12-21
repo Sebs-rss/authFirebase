@@ -2,7 +2,7 @@
     <div>
       <h1>Home</h1>
       <p>Te doy la bienvenida a la página de inicio, solo accesible para usuarios autenticados.</p>
-      <button @click="logout">Cerrar sesión</button>
+      <button class="btn btn-primary" @click="logout">Cerrar sesión</button>
     </div>
   </template>
   
@@ -17,6 +17,8 @@
       const router = useRouter();
       const user = ref(null);
   
+      // cuando el componente se monta, se verifica si hay un usuario autenticado en firebase
+      // si no hay usuario autenticado, se redirige a la página de login
       onMounted(() => {
         user.value = auth.currentUser;
         if (!user.value) {
