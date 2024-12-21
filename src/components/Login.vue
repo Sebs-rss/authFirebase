@@ -27,6 +27,7 @@ import { auth } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default {
+  
   setup() {
     const email = ref('');
     const password = ref('');
@@ -34,14 +35,14 @@ export default {
     const login = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
-        alert('User logged in successfully');
+        alert('Login exitoso, puedes navegar a Home');
       } catch (error) {
         alert(error.message);
       }
     };
-
     return { email, password, login };
-  }
+  },
+  
 };
 </script>
 
